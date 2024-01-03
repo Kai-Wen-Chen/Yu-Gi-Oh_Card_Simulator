@@ -4,13 +4,48 @@
 
 namespace card {
 
+std::string CardTypeToString(CardType card_type) {
+    switch (card_type)
+    {
+        case CardType::MONSTER:
+        {
+            return "Monster";
+        }
+        break;
+
+        case CardType::MAGIC:
+        {
+            return "Magic";
+        }
+        break;
+
+        case CardType::TRAP:
+        {
+            return "Trap";
+        }
+        break;
+
+        default:
+        {
+            return "Unknown";
+        }
+        break;
+    }
+}
+
 Card::Card(const std::vector<std::string>& rule_names): Card(rule_names, rule_names){
     // do nothing
 }
 
 Card::Card(const std::vector<std::string>& rule_names, const std::vector<std::string>& display_names): 
+    Card(rule_names, display_names, CardType::UNKNOWN) {
+    // do nothing
+}
+
+Card::Card(const std::vector<std::string>& rule_names, const std::vector<std::string>& display_names, CardType card_type): 
     rule_names_(rule_names),
-    display_names_(display_names) {
+    display_names_(display_names),
+    card_type_(card_type) {
     // do nothing
 }
 
@@ -32,6 +67,10 @@ void Card::AppendDisplayName(const std::string& name) {
     display_names_.push_back(name);
 }
 
+void Card::SetCardType(CardType card_type) {
+    card_type_ = card_type;
+}
+
 std::ostream& operator<< (std::ostream& ostream, Card& card) {
     ostream << "Rule names: " << std::endl;
     for (auto& name : card.GetRuleNames()) {
@@ -42,6 +81,8 @@ std::ostream& operator<< (std::ostream& ostream, Card& card) {
     for (auto& name : card.GetDisplayNames()) {
         ostream << name << std::endl;
     }
+
+    ostream << "Card type: " << std::endl << CardTypeToString(card.GetCardType()) << std::endl;
 
     return ostream;
 }

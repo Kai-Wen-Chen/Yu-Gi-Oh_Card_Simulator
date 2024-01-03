@@ -2,13 +2,6 @@
 
 #include "../../header/test/CardTest.h"
 
-CardTest::CardTest() {
-    card_.reset();
-    
-    std::vector<std::string> rule_names = {"Test Card"};
-    card_ = std::make_unique<card::Card>(rule_names);
-}
-
 CardTest::CardTest(const std::vector<std::string>& rule_names) {
     card_.reset();
     card_ = std::make_unique<card::Card>(rule_names);
@@ -17,6 +10,11 @@ CardTest::CardTest(const std::vector<std::string>& rule_names) {
 CardTest::CardTest(const std::vector<std::string>& rule_names, const std::vector<std::string>& display_names) {
     card_.reset();
     card_ = std::make_unique<card::Card>(rule_names, display_names);
+}
+
+CardTest::CardTest(const std::vector<std::string>& rule_names, const std::vector<std::string>& display_names, cardtype::CardType card_type) {
+    card_.reset();
+    card_ = std::make_unique<card::Card>(rule_names, display_names, card_type);
 }
 
 bool CardTest::ExistencyTest() {

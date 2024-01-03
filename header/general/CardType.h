@@ -7,7 +7,7 @@ namespace cardtype {
         UNKNOWN // for null card
     };
 
-}
+} // end of namespace cardtype
 
 namespace monstercardtype {
     
@@ -22,7 +22,7 @@ namespace monstercardtype {
         LINK
     };
 
-}
+} // end of namespace monstercardtype
 
 namespace monsterattribute {
     
@@ -36,7 +36,7 @@ namespace monsterattribute {
         DIVINE
     };
 
-}
+} // end of namespace monsterattribute
 
 namespace monstertype {
     
@@ -69,7 +69,7 @@ namespace monstertype {
         ZOMBIE // Undead
     };
 
-}
+} // end of namespace monstertype
 
 namespace magiccardtype {
     
@@ -82,7 +82,7 @@ namespace magiccardtype {
         PENDULUM
     };
 
-}
+} // end of namespace magiccardtype
 
 namespace trapcardtype {
     
@@ -92,4 +92,4 @@ namespace trapcardtype {
         COUNTER
     };
 
-}
+} // end of namespace trapcardtype
