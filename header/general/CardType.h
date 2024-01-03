@@ -1,3 +1,5 @@
+#pragma once
+
 namespace cardtype {
 
     enum CardType {
@@ -38,9 +40,9 @@ namespace monsterattribute {
 
 } // end of namespace monsterattribute
 
-namespace monstertype {
+namespace monsterrace {
     
-    enum MonsterType {
+    enum MonsterRace {
         AQUA = 0,
         BEAST,
         BEAST_WARRIOR,

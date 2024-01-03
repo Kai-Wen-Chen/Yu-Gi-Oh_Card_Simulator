@@ -8,9 +8,8 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${workspaceFolder}/src/general/*.cpp",
+                "${workspaceFolder}/src/monster/*.cpp",
                 "${workspaceFolder}/src/test/*.cpp",
-                "${workspaceFolder}/header/general/*.h",
-                "${workspaceFolder}/header/test/*.h",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],

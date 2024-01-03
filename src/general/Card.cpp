@@ -4,6 +4,8 @@
 
 namespace card {
 
+using cardtype::CardType;
+
 std::string CardTypeToString(CardType card_type) {
     switch (card_type)
     {
@@ -42,6 +44,11 @@ Card::Card(const std::vector<std::string>& rule_names, const std::vector<std::st
     // do nothing
 }
 
+Card::Card(const std::vector<std::string>& rule_names, CardType card_type): 
+    Card(rule_names, rule_names, card_type) {
+    // do nothing
+}
+
 Card::Card(const std::vector<std::string>& rule_names, const std::vector<std::string>& display_names, CardType card_type): 
     rule_names_(rule_names),
     display_names_(display_names),
@@ -67,6 +74,15 @@ void Card::AppendDisplayName(const std::string& name) {
     display_names_.push_back(name);
 }
 
+void Card::SetEffects(const std::vector<effect::Effect*>& effects) {
+    effects_.clear();
+    effects_.assign(effects.begin(), effects.end());
+}
+
+void Card::AppendEffect(effect::Effect* effect) {
+    effects_.push_back(effect);
+}
+
 void Card::SetCardType(CardType card_type) {
     card_type_ = card_type;
 }
@@ -77,12 +93,22 @@ std::ostream& operator<< (std::ostream& ostream, Card& card) {
         ostream << name << std::endl;
     }
 
+    ostream << std::endl;
+
     ostream << "Display names: " << std::endl;
     for (auto& name : card.GetDisplayNames()) {
         ostream << name << std::endl;
     }
 
+    ostream << std::endl;
+
     ostream << "Card type: " << std::endl << CardTypeToString(card.GetCardType()) << std::endl;
+
+    ostream << std::endl;
+
+    ostream << "Number of effects: " << std::endl << card.GetEffects().size() << std::endl;
+
+    ostream << std::endl;
 
     return ostream;
 }
